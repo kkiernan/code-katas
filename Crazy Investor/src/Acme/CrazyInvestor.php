@@ -30,9 +30,9 @@ class CrazyInvestor {
 	}
 
 	/**
-	 * Get the code for a startup. Note the str_replace call before
-	 * returning the solution. This fixes the modulus operation
-	 * that returns 0 for the 6th column.
+	 * Get the code for a startup. Note the str_replace call before returning
+	 * the solution. This fixes the modulus operation that returns 0 for
+	 * the 6th column in the getCoordinates method.
 	 *
 	 * @param  string $startup
 	 * @return string
@@ -40,21 +40,37 @@ class CrazyInvestor {
 	public function getCode($startup)
 	{
 		$startup = strtoupper($startup);
+
 		$solution = '';
 
 		foreach (str_split($startup) as $letter)
 		{
-			foreach ($this->soupLetter as $key => $value)
-			{
-				if ($letter === $value)
-				{
-					$x = ceil(($key + 1) % 6);
-					$y = ceil(($key + 1) / 6);
-					$solution .= "$y$x";
-				}
-			}
+			$coords = $this->getCoordinates($letter);
+
+			$solution .= $coords;
 		}
 
 		return str_replace('0', '6', $solution);
+	}
+
+	/**
+	 * Get the soup letter "coordinates" for a specified letter.
+	 *
+	 * @param  string $letter
+	 * @return string
+	 */
+	private function getCoordinates($letter)
+	{
+		foreach ($this->soupLetter as $key => $value)
+		{
+			if ($letter === $value)
+			{
+				$x = ceil(($key + 1) % 6);
+
+				$y = ceil(($key + 1) / 6);
+
+				return "$y$x";
+			}
+		}
 	}
 }
