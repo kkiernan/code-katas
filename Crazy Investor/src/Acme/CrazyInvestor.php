@@ -20,7 +20,7 @@ class CrazyInvestor {
 	}
 
 	/**
-	 * Get the soup letter param.
+	 * Get the soup letter.
 	 *
 	 * @return array
 	 */
@@ -39,38 +39,31 @@ class CrazyInvestor {
 	 */
 	public function getCode($startup)
 	{
-		$startup = strtoupper($startup);
-
 		$solution = '';
 
 		foreach (str_split($startup) as $letter)
 		{
-			$coords = $this->getCoordinates($letter);
-
-			$solution .= $coords;
+			$solution .= $this->getCoordinates($letter);
 		}
 
 		return str_replace('0', '6', $solution);
 	}
 
 	/**
-	 * Get the soup letter "coordinates" for a specified letter.
+	 * Get the soup letter "coordinates" for the specified letter.
 	 *
 	 * @param  string $letter
 	 * @return string
 	 */
 	private function getCoordinates($letter)
 	{
-		foreach ($this->soupLetter as $key => $value)
-		{
-			if ($letter === $value)
-			{
-				$x = ceil(($key + 1) % 6);
+		$index = array_search(strtoupper($letter), $this->soupLetter);
 
-				$y = ceil(($key + 1) / 6);
+		$x = ceil(($index + 1) % 6);
 
-				return "$y$x";
-			}
-		}
+		$y = ceil(($index + 1) / 6);
+
+		return "$y$x";
 	}
+
 }

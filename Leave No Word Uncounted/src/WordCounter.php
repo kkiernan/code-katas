@@ -10,9 +10,7 @@ class WordCounter {
 	 */
 	public function count($phrase)
 	{
-		$count = count(array_filter(preg_split("/[^[:alnum:]][ ]?/", $phrase)));
-
-		return $count;
+		return count(array_filter(preg_split("/[^[:alnum:]][ ]?/", $phrase)));
 	}
 
 }
