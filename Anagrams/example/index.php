@@ -2,28 +2,25 @@
 
 require '../vendor/autoload.php';
 
-use Acme\Detector;
-use Acme\Parser;
-use Acme\Formatter;
+use Acme\Dictionary;
+use Acme\Format;
 
-echo "Getting content...\n";
-$content = file_get_contents('http://codekata.com/data/wordlist.txt');
+echo "Getting word list...\n";
+$list = file_get_contents('http://codekata.com/data/wordlist.txt');
 
-echo "Content retrieved.\nCreating dictionary...\n";
-$parser = new Parser;
-$dictionary = $parser->getWords($content);
+echo "Creating dictionary...\n";
+$dictionary = Dictionary::fromString($list);
 
-echo "Dictionary created.\nFinding anagrams...\n";
-$detector = new Detector($dictionary);
-$anagrams = $detector->getAnagrams();
+echo "Finding anagrams...\n";
+$anagrams = $dictionary->getAnagrams();
 
-echo "Anagrams found.\nFormatting as text...\n";
-$formatter = new Formatter;
-$text = $formatter->getText($anagrams);
+echo "Formatting anagrams...\n";
+$format = new Format;
+$anagrams = $format->asText($anagrams);
 
 echo "Saving file...\n";
 $file = fopen('anagrams.txt', 'w');
-fwrite($file, $text);
+fwrite($file, $anagrams);
 fclose($file);
 
-echo "File saved to anagrams.txt";
+echo "File saved as anagrams.txt";
