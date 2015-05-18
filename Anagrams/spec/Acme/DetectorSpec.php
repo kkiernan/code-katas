@@ -14,7 +14,7 @@ class DetectorSpec extends ObjectBehavior {
 
 	function it_finds_anagrams()
 	{
-		$this->anagrams()->shouldReturn([
+		$this->getAnagrams()->shouldReturn([
 			'agiinr' => [
 				'airing',
 				'ragini'

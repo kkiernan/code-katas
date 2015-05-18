@@ -3,12 +3,13 @@
 class Parser {
 
 	/**
-	 * Returns a string of letters used in a word in alphabetical order.
+	 * Returns a string of letters used in a word in alphabetical order. We will
+	 * refer to this string as the words signature.
 	 *
 	 * @param  string $word
 	 * @return string
 	 */
-	public function alphaSortLetters($word)
+	public function getSignature($word)
 	{
 		$letters = preg_split('/(.)/', $word, null, PREG_SPLIT_NO_EMPTY|PREG_SPLIT_DELIM_CAPTURE);
 
@@ -24,7 +25,7 @@ class Parser {
 	 * @param  string $delimiter
 	 * @return array
 	 */
-	public function words($content, $delimiter = "\n")
+	public function getWords($content, $delimiter = "\n")
 	{
 		return explode($delimiter, $content);
 	}

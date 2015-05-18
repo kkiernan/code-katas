@@ -30,9 +30,7 @@ class CrazyInvestor {
 	}
 
 	/**
-	 * Get the code for a startup. Note the str_replace call before returning
-	 * the solution. This fixes the modulus operation that returns 0 for
-	 * the 6th column in the getCoordinates method.
+	 * Get the code for the specified startup.
 	 *
 	 * @param  string $startup
 	 * @return string
@@ -46,11 +44,13 @@ class CrazyInvestor {
 			$solution .= $this->getCoordinates($letter);
 		}
 
-		return str_replace('0', '6', $solution);
+		return $solution;
 	}
 
 	/**
-	 * Get the soup letter "coordinates" for the specified letter.
+	 * Get the soup letter coordinates for the specified letter. Note the
+	 * str_replace call before returning the coordinates. This fixes
+	 * the modulus operation that returns 0 for the 6th column.
 	 *
 	 * @param  string $letter
 	 * @return string
@@ -63,7 +63,7 @@ class CrazyInvestor {
 
 		$y = ceil(($index + 1) / 6);
 
-		return "$y$x";
+		return $y . str_replace('0', '6', $x);
 	}
 
 }

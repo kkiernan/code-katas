@@ -24,34 +24,41 @@ class Detector {
 	public function __construct($dictionary)
 	{
 		$this->dictionary = $dictionary;
+
 		$this->parser = new Parser;
 	}
 
 	/**
-	 * Find the anagrams in an array of words.
+	 * Get the anagrams from an array of words.
 	 *
 	 * @return array
 	 */
-	public function anagrams()
+	public function getAnagrams()
 	{
-		$anagrams = [];
+		return array_filter($this->getWordGroups(), function($words)
+		{
+			return count($words) > 1;
+		});
+	}
+
+	/**
+	 * Group the words in the dictionary together by the letters
+	 * they use, in alphabetical order.
+	 * 
+	 * @return array
+	 */
+	private function getWordGroups()
+	{
+		$groups = [];
 
 		foreach ($this->dictionary as $word)
 		{
-			$key = $this->parser->alphaSortLetters($word);
+			$key = $this->parser->getSignature($word);
 
-			$anagrams[$key][] = $word;
+			$groups[$key][] = $word;
 		}
 
-		foreach ($anagrams as $key => $words)
-		{
-			if (count($words) <= 1)
-			{
-				unset($anagrams[$key]);
-			}
-		}
-
-		return $anagrams ?: '';
+		return $groups;
 	}
 
 }

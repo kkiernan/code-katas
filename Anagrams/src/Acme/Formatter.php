@@ -17,12 +17,7 @@ class Formatter {
 			$text .= implode(' ', $words) . "\n";
 		}
 
-		if ($text != '')
-		{
-			$text = substr($text, 0, -1);
-		}
-
-		return $text;
+		return trim($text);
 	}
 	
 }
