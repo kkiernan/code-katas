@@ -1,6 +1,6 @@
 <?php namespace Acme;
 
-class String {
+class Counter {
 
 	/**
 	 * @var string
@@ -22,7 +22,7 @@ class String {
 	 * 
 	 * @return int
 	 */
-	public function wordCount()
+	public function words()
 	{
 		return str_word_count($this->string);
 	}
@@ -32,7 +32,7 @@ class String {
 	 * 
 	 * @return int
 	 */
-	public function letterCount()
+	public function letters()
 	{
 		preg_match_all('/[A-z]/', $this->string, $matches);
 
@@ -44,7 +44,7 @@ class String {
 	 *  
 	 * @return int
 	 */
-	public function symbolCount()
+	public function symbols()
 	{
 		preg_match_all('/[^\d^\s^A-z]/', $this->string, $matches);
 
@@ -113,9 +113,9 @@ class String {
 	{
 		$result = [];
 		
-		$result[] = $this->wordCount();
-		$result[] = $this->letterCount();
-		$result[] = $this->symbolCount();
+		$result[] = $this->words();
+		$result[] = $this->letters();
+		$result[] = $this->symbols();
 		$result[] = $this->repeatingWords();
 		$result[] = $this->repeatingLetters();
 		$result[] = $this->lonelyWords();

@@ -3,7 +3,7 @@
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class StringSpec extends ObjectBehavior {
+class CounterSpec extends ObjectBehavior {
 
 	function let()
 	{
@@ -12,22 +12,22 @@ class StringSpec extends ObjectBehavior {
 
 	function it_should_be_initializable()
 	{
-		$this->shouldHaveType('Acme\String');
+		$this->shouldHaveType('Acme\Counter');
 	}
 
 	function it_gets_the_number_of_words_in_a_string()
 	{
-		$this->wordCount()->shouldReturn(4);
+		$this->words()->shouldReturn(4);
 	}
 
 	function it_gets_the_number_of_letters_in_a_string()
 	{
-		$this->letterCount()->shouldReturn(19);
+		$this->letters()->shouldReturn(19);
 	}
 
 	function it_gets_the_number_of_symbols_in_a_string()
 	{
-		$this->symbolCount()->shouldReturn(1);
+		$this->symbols()->shouldReturn(1);
 	}
 
 	function it_gets_words_used_two_or_more_times()
