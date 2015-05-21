@@ -8,7 +8,7 @@ class Counter {
 	protected $string;
 
 	/**
-	 * Create a new string instance.
+	 * Create a new counter instance.
 	 * 
 	 * @param string $string
 	 */
