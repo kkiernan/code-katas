@@ -14,9 +14,7 @@ class HashtagDetector {
 
 		$hashtags = preg_grep('/^#+[A-z0-9]+/', $words);
 
-		$result = str_replace('#', '', implode(',', $hashtags));
-
-		return $result;
+		return str_replace('#', '', implode(',', $hashtags));
 	}
 
 }
