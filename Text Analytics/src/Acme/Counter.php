@@ -96,12 +96,12 @@ class Counter {
 	{
 		$words = explode(' ', $this->string);
 
-		$repeaters = array_filter(array_count_values($words), function($count)
+		$lonelyWords = array_filter(array_count_values($words), function($count)
 		{
 			return $count === 1;
 		});
 
-		return count($repeaters);
+		return count($lonelyWords);
 	}
 
 	/**
