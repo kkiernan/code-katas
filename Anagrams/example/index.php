@@ -14,9 +14,8 @@ $dictionary = Dictionary::fromString($list);
 echo "Finding anagrams...\n";
 $anagrams = $dictionary->getAnagrams();
 
-echo "Formatting anagrams...\n";
-$format = new Format;
-$anagrams = $format->asText($anagrams);
+echo "Formatting anagrams as text list...\n";
+$anagrams = Format::asText($anagrams);
 
 echo "Saving file...\n";
 $file = fopen('anagrams.txt', 'w');

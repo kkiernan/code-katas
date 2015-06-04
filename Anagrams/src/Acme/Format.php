@@ -8,7 +8,7 @@ class Format {
 	 * @param  array $array
 	 * @return string
 	 */
-	public function asText($array)
+	public static function asText($array)
 	{
 		$text = '';
 
