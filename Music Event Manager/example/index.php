@@ -1,10 +1,11 @@
 <?php
 
-// $input = '{"bands" : [{"id" : "1", "style" : "Rock", "date_range" : "01-05/15-05"}, {"id" : "2", "style" : "Hip Hop", "date_range" : "05-05/08-05"}], "shows" : [{"id" : "1", "style" : "Rock", "date" : "05-05"}, {"id" : "2", "style" : "Hip Hop", "date" : "01-05"}, {"id" : "3", "style" : "Classic", "date" : "18-05"}]}';
+use Acme\Manager;
 
-// print_r(json_decode($input));
+require '../vendor/autoload.php';
 
+$input = '{"bands":[{"id":"3","style":"Rock","date_range":"16-07/26-07"},{"id":"5","style":"Rock","date_range":"06-07/16-07"}],"shows":[{"id":"2","style":"Rock","date":"16-07"},{"id":"3","style":"Rock","date":"26-07"}]}';
 
-$begin = new DateTime('2015-05-15');
+$input = json_decode($input);
 
-print_r($begin);
+echo Manager::hireBands($input);
