@@ -1,0 +1,3 @@
+# Bot Saves Princess
+
+Cool [HackerRank challenge](https://www.hackerrank.com/challenges/saveprincess). Messy but works 100%. Need to refactor, cleanup, etc...
