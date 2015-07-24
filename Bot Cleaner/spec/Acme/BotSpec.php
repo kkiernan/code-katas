@@ -51,7 +51,6 @@ class BotSpec extends ObjectBehavior
         $this->move(0, 0, $board)->shouldBe('RIGHT');
         $this->move(0, 1, $board)->shouldBe('CLEAN');
         $this->move(0, 2, $board)->shouldBe('DOWN');
-        $this->move(1, 2, $board)->shouldBe('DOWN');
-        $this->move(2, 2, $board)->shouldBe('LEFT');
+        $this->move(1, 2, $board)->shouldBe('LEFT');
     }
 }

@@ -21,29 +21,27 @@ class Bot
             echo "CLEAN";
             return "CLEAN";
         }
-  
-        // Can we move right?
-        if (static::moveIsValid($m, $n + 1, $board)) {
-            echo "RIGHT";
-            return "RIGHT";
+
+        // Attempt to move right if we are on an odd number row.
+        if (($m + 1) % 2 > 0) {
+            if (static::moveIsValid($m, $n + 1, $board)) {
+                echo "RIGHT";
+                return "RIGHT";
+            }
+        }
+
+        // Attempt to move left if we are on an even number row.
+        if (($m + 1) % 2 === 0) {
+            if (static::moveIsValid($m, $n - 1, $board)) {
+                echo "LEFT";
+                return "LEFT";
+            }
         }
 
         // Can we move down?
         if (static::moveIsValid($m + 1, $n, $board)) {
             echo "DOWN";
             return "DOWN";
-        }
-    
-        // Can we move left?
-        if (static::moveIsValid($m, $n - 1, $board)) {
-            echo "LEFT";
-            return "LEFT";
-        }
-
-        // Can we move up? 
-        if (static::moveIsValid($m - 1, $n, $board)) {
-            echo "UP";
-            return "UP";
         }
     }
 
